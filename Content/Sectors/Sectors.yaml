@@ -1,0 +1,86 @@
+--- 
+# Sectors
+# IMPORTANT: YAML files use spaces as indentation. Please don't use TABs: http://yaml.org/faq.html
+# Default starter planets on a Dedicated Server are Akua, Omicron, Ningues and Masperon. 'Origin:Number' behind playfield template sets starter planet [ "0, 0, 0", Akua, Temperate, 'Human:1' ]
+# Allow and Deny lists: If “Allow” is set, sectors that are given in list are accessible in addition to those that are close enough. If “Deny” is set, sectors that are given in list are not accessible. 
+
+- Coordinates: [0, 30, 0]
+  Color: 0, 0, 0
+  Playfields:
+  - ['0, 0, 0', Sun, Sun]
+- Coordinates: [-176, 62, 21]
+  Color: 0.3, 0.06, 0.04
+  Icon: Circle
+  Playfields:
+  - ['0, 0, 0', Aestus Orbit, SpaceAsteroidFieldRingAestus]
+  - ['0, 0, 0', Aestus, Lava]
+- Coordinates: [243, -61, -297]
+  Color: 0.5, 0.5, 0.5
+  Icon: Kite
+  Playfields:
+  - ['0, 0, 0', Alien Outpost, SpaceAlienStation]
+- Coordinates: [215, 85, 307]
+  Color: 0.37, 0.33, 0.04
+  Icon: Circle
+  Playfields:
+  - ['0, 0, 0', Skillon Orbit, SpaceAsteroidsFew]
+  - ['0, 0, 0', Skillon, Barren]
+- Coordinates: [-10, 109, 140]
+  Color: 1, 0.5, 0
+  Icon: Star
+  Deny: ["Asteroid Field"]
+  # Allow: ["Masperon Orbit"]
+  Playfields:
+  - ['0, 0, 0', Trading Outpost, SpaceTradingStation]
+- Coordinates: [90, 5, 115]
+  Color: 0.04, 0.3, 0.37
+  Icon: Circle
+  Playfields:
+  - ['0, 0, 0', Akua Orbit, SpaceAsteroidFieldRing]
+  - ['0, 0, 0', Akua, Temperate, 'Human:1']
+  - ['-6500, 5000, 6500', Akua Moon, Moon]
+- Coordinates: [126, -10, -57]
+  Color: 0.37, 0.33, 0.04
+  Icon: Circle
+  Playfields:
+  - ['0, 0, 0', Omicron Orbit, SpaceAsteroidFieldOmicron]
+  - ['0, 0, 0', Omicron, Desert, 'Explorer:2']
+  - ['2000, 5000, -7000', Omicron Moon, Moon]
+- Coordinates: [40, 30, 362]
+  Color: 0.7, 0.7, 0.7
+  Icon: Circle
+  Playfields:
+  - ['0, 0, 0', Ningues Orbit, SpaceEmptyNingues]
+  - ['0, 0, 0', Ningues, Snow, 'Explorer:2']
+- Coordinates: [344, 13, 116]
+  Color: 0.3, 0.06, 0.04
+  Icon: Circle
+  Playfields:
+  - ['0, 0, 0', Aitis Orbit, SpaceAsteroids]
+  - ['0, 0, 0', Aitis, Lava2]
+- Coordinates: [-142, 39, 257]
+  Color: 0.5, 0.5, 0.5
+  Icon: Rhombus
+  Deny: ["Trading Outpost"]
+  Playfields:
+  - ['0, 0, 0', Asteroid Field, SpaceAsteroidField]
+- Coordinates: [23, -43, -192]
+  Color: 0.37, 0.33, 0.04
+  Icon: Circle
+  Playfields:
+  - ['0, 0, 0', Zeyhines Orbit, SpaceAsteroidsFewZeyhines]
+  - ['0, 0, 0', Zeyhines, Desert2]
+- Coordinates: [366, 38, -112]
+  Color: 0.15, 0.3, 0.04
+  Icon: Circle
+  Allow: ["Trading Outpost"]
+  Playfields:
+  - ['0, 0, 0', Masperon Orbit, SpaceAsteroids]
+  - ['0, 0, 0', Masperon, Alien2, 'Humanoid:3']
+  - ['6000, -4000, 7000', Masperon Moon, Alien, '']
+- Coordinates: [-120, 31, -143]
+  Color: 0.04, 0.3, 0.37
+  Icon: Circle
+  Playfields:
+  - ['0, 0, 0', Oscutune Orbit, SpaceAsteroids]
+  - ['0, 0, 0', Oscutune, Temperate2]

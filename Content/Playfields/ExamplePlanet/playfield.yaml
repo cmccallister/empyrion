@@ -1,0 +1,545 @@
+---
+# Playfield Configuration
+# IMPORTANT: YAML files use spaces as indentation. Please don't use TABs - tab indentation is forbidden: http://yaml.org/faq.html
+
+### Playfield Characteristics
+
+# General Information
+RealRadius: 1303.797294             # Please don't change
+ScaledRadius: 1300                  # Please don't change
+Gravity: -9.81                      # Gravity on planet
+AtmosphereDensity: 1.217            # Please don't change
+AtmosphereBreathable: False         # If player can breathe without helmet
+Temperature: 32                     # No functionality yet
+TemperatureDay: 53                  # No functionality yet
+TemperatureNight: 13                # No functionality yet
+DayLength: 24                       # No functionality yet
+PlanetType: Desert                  # No functionality yet
+Moons: 1                            # No functionality yet
+Water: WaterGreen                   # WaterBlue, WaterGreen, WaterBrown
+SeaLevel: 29                        # Sea level of planet, max 250
+PvP: False                          # Set to True to allow PvP in this playfield, default is False
+#Seed: 123456                       # If set overwrites main Seed
+#UseFixed: False					# If set uses fixed POIs + resources
+
+# Playfield Difficulty (has impact on experience gains)
+Difficulty: 3                       # Between 2 and 5: larger values indicate higher difficulty
+
+# Planet or Space
+PlayfieldType: Planet               # Please don't change
+Description: Omicron is a desert planet with mountain ranges, lakes, plains and rugged terrain. The atmosphere is relatively thin and non breathable. However, oxygen can be generated from the water of the lakes. [c][e0e020]Be warned, choosing this planet as the survival start is recommended for experienced players only.[-][/c]
+
+# Sun                               # SunFlareBlue, SunFlarePurple, SunFlareRed, SunFlareWhite, SunFlareWhite2, SunFlareWhite3, SunFlareWhite4, SunFlareYellow, SunFlareYellow2, SunFlareYellow3, SunFlareWhiteMoon
+SunFlare: EnvironmentalEffects/SunFlareWhite
+
+
+# Special Effects                   # Please don't change
+SpecialEffectsLocal:
+  - Name: Pollen
+    Biome: [ DesertLowPlains, SmallLake ]
+    Time: Day
+    MaxHeight: 75
+    Struct: False
+    FollowPlayerY: True
+  - Name: FireFliesGreenFew
+    Biome: [ DesertLowPlains ]
+    Time: Night
+    MaxHeight: 75
+    Struct: False
+    FollowPlayerY: True
+
+# SpecialEffectsGlobal:
+  # - Name: CrowFlockFreeRoam
+    # Biome: [ Any ]
+    # Time: Always
+    # Count: 2
+    # PlyDist: 100
+    # SpawnY: 20
+    # Struct: True
+  # - Name: MeteorShower
+    # Biome: [ DesertHighPlains ]
+    # Time: Always
+    # Count: 5
+    # PlyDist: 100
+    # SpawnY: 100
+    # Struct: Avoid
+
+# Atmosphere and Sky
+AtmosphereEnabled: True             # Atmosphere True or False
+AtmosphereColor: "0.19, 0.26, 0.35" # Color of atmosphere seen in space, default is white "1,1,1"
+SkyColor: "1, 1, 1"                 # Color of skybox, default is white "1,1,1"
+
+# Light
+DayLightIntensity: 1.1              # Between 0 and 1.2: larger values = brighter, default is 0.6
+NightLightIntensity: 0.6            # Between 0 and 1: larger values = brighter, default is 0.6
+
+# Fog
+AtmosphereFog: 0                    # Distant fog, between 0 and 1: larger values = stronger
+FogCloudIntensity: 0.3              # Waft of mist in air, between 0 and 1: larger values = stronger
+FogIntensity: 0.1                   # Near Fog/Atmospheric Scattering Intensity, between 0 and 1: larger values = stronger
+FogStartDistance: 400               # Near Fog/Atmospheric Scattering Start Distance, in m
+GroundFogIntensity: 0               # Ground Layer Fog, between 0 and 1: larger values = stronger
+GroundFogHeight: 0                  # Ground Layer Fog Height
+
+# Clouds
+CloudsDensity: 0.6                  # Between 0 and 1: larger values = more clouds (coverage)
+CloudsSharpness: 0.4                # Between 0 and 1: larger values = less dense clouds
+CloudsBrightness: 1.5               # Between 0 and 2: larger values = brighter clouds
+CloudsOpacity: 0.8                  # Between 0 and 1: larger values = more opaque, default is 0.9
+
+# Wind Speed
+WindSpeed: 4                        # Between 0 and 10: larger values = faster moving clouds
+
+
+### Resources
+RandomResources:
+    - Name: IronResource      # Name of resource
+      CountMinMax: [ 4, 5 ]   # Range of number of resources to distribute on planet
+      SizeMinMax: [ 10, 16 ]  # Range of sizes of resource depots
+      DepthMinMax: [ 0, 1 ]   # Range of how deep to bury depots below terrain surface (e.g. 0 = partly visible, 3 = top of depot starts 3m below surface)
+      DroneProb: 0.2          # Probability that resource is defended by drones
+      MaxDroneCount: 1        # If at all, 1..n drones will defend resource [default = 1]
+
+    - Name: CobaltResource
+      CountMinMax: [ 3, 4 ]
+      SizeMinMax: [ 9, 15 ]
+      DepthMinMax: [ 0, 1 ]
+      DroneProb: 0.3
+
+FixedResources:
+    - Name: SiliconResource     # Name of resource
+      Pos: [ 646, 33, -607 ]    # Position coordinates
+      Radius: 4                 # Size 
+
+    - Name: SiliconResource
+      Pos: [ 646, 40, -705 ]
+      Radius: 5
+
+# Resource asteroids that will spawn on a dedicated server
+AsteroidResources:
+    - Name: IronResource        # Name of resource
+      Threshold: 0.5            # Between 0 and 1: If total amount of ore on a playfield drops below this threshold, resource asteroid start to spawn
+      Amount: 0.3               # Between 0 and 1: amount of ore that will be filled up. E.g. 1 = asteroids will spawn until 100% of the starting ores are filled up
+
+    - Name: CobaltResource
+      Threshold: 0.1
+      Amount: 1
+
+# If no resource asteroids should spawn at all: 
+    # - Name: NoResource
+      # Threshold: 0
+      # Amount: 0
+
+### Terrain and Decorations
+# Terrain and Local Decoration
+Terrain:
+    Name: Desert                        # Name of terrain dll
+    PoleLevel: 38                       # Pole level of planet
+    NoiseStrength: 0.55                 # Dirt effect on terrain
+    ColorChange:                        # Used to generate color differences in terrain
+        YFadeCenter: 60                 # Starting point for color change
+        YFadeRange: 40                  # Range for which color change is applied
+        YFadeMin: 0.15                  # Positive values: terrain gets brighter below YFadeCenter (brighter valleys)
+        YFadeMax: -0.2                  # Negative values: terrain gets darker above YFadeCenter (darker mountains)
+
+MainBiome:                              # Main biome
+    Textures:
+        - [ GravelRockBrown03, 5 ]      # Name of terrain texture, depth
+        - [ RockBrown01, 0 ]            
+        - [ Bedrock, 2 ]                
+
+    Decorations:
+        - [ RocksmallA02, 0.1 ]         # [ Name, Density ]
+        - [ RocksmallC01, 0.1 ] 
+
+SubBiomes:
+    - Altitude: 29                      # Altitude at which subbiome starts 
+      Textures:
+        - [ StoneBeach, 27 ]
+    - Altitude: 31
+      Textures:
+        - [ SandBeach, 2 ]
+      Decorations:
+        - [ RocksmallA02, 0.2 ]
+        - [ RocksmallC01, 0.2 ]
+
+# Biome Definition and Main Decoration
+Biome:
+# Water
+   - Altitude: [ 3, 21 ]                            # Altitude between which biome lays
+     Slope: [ 0, 35 ]                               # Slope for biome
+     BiomeClusterData:          
+         - Name: "SmallLake"                        # Name of biome
+           Id: 1                                    # ID of biome
+           ClusterSize: 0
+           NbOfClusters: 0
+           Decorations: 
+               - [ CoralBig01, 1]                   # [ Name, Density ]
+               - [ Hydrilla2, 3] 
+               - [ SeaWeed02-04, 5]
+               - [ RealRock1Water, 2]
+               - [ RealRock5Water, 1] 
+               - [ CrystalStraight, 0.5]
+           Grass:
+               - Name: "GrassGreen01"
+                 Density: 1000
+                 YScale: 1
+                 Preset: "GrassDense"
+               - Name: "GrassGreen01"
+                 Density: 500
+                 YScale: 1.5
+                 Preset: "GrassPatches"
+   - Altitude: [ 21, 33 ]
+     Slope: [ 0, 20 ]
+     BiomeClusterData: 
+         - Name: "SmallLake"
+           Id: 1
+           ClusterSize: 0
+           NbOfClusters: 0
+           Decorations: 
+               - [ OmicronPlant, 15] 
+               - [ CattailWinter, 3]      
+           Grass:
+               - Name: "GrassGreen01a"
+                 Density: 1000
+                 YScale: 0.8
+                 Preset: "GrassDense2"
+   - Altitude: [ 0, 33 ]
+     Slope: [ 0, 180 ]
+     BiomeClusterData:
+         - Name: "SmallLake"
+           Id: 1
+           ClusterSize: 0
+           NbOfClusters: 0
+           Decorations: 
+               - [ RealRock1Water, 0]
+# Lower Plains
+   - Altitude: [ 35, 40 ]                             
+     Slope: [ 0, 15 ]  
+     BiomeClusterData:          
+         - Name: "DesertLowPlains"  
+           Id: 2           
+           ClusterSize: 0
+           NbOfClusters: 0
+           Decorations: 
+               - [ OmicronPalm, 20]   
+               - [ EggPlant, 1]  
+               - [ InsanityPepper, 0.5]   
+               - [ CobraLeavesPlant, 0.5]   
+               - [ CattailWinter, 0.8]   
+           Grass:
+               - Name: "GrassGreen03a"
+                 Density: 1000
+                 YScale: 0.8
+                 Preset: "GrassDense2"       
+   - Altitude: [ 40, 55 ]
+     Slope: [ 0, 15 ]
+     BiomeClusterData:          
+         - Name: "DesertLowPlains"
+           Id: 2
+           ClusterSize: 70
+           NbOfClusters: 35
+           Decorations: 
+               - [ OmicronPalm, 20]                
+               - [ EggPlant, 1]  
+               - [ InsanityPepper, 0.5]   
+               - [ CobraLeavesPlant, 0.5]  
+               - [ CattailWinter, 0.8]
+           Grass:
+               - Name: "GrassBrown02a"
+                 Density: 1000
+                 YScale: 0.8
+                 Preset: "GrassDense2"         
+         - Name: "DesertLowPlains"
+           Id: 2
+           ClusterSize: 0
+           NbOfClusters: 0
+           Decorations:  
+               - [ BulbShroom, 1]     
+               - [ DesertPlant20, 0.5]    
+               - [ ClusterShroom, 1]    
+               - [ CoralStone04-03, 1]    
+               - [ DesertRockLarge, 0.1]           
+               - [ DesertRockMedium1, 0.1]           
+               - [ DesertRockMedium2, 0.1]
+           Grass:
+               - Name: "GrassBrown02a"
+                 Density: 1000
+                 YScale: 0.8
+                 Preset: "GrassDense2"       
+   - Altitude: [ 32, 55 ]
+     Slope: [ 0, 180 ]
+     BiomeClusterData:
+         - Name: "DesertLowPlains"
+           Id: 2
+           ClusterSize: 0
+           NbOfClusters: 0
+           Decorations: 
+               - [ RealRock1, 0]
+# Higher Plains
+   - Altitude: [ 55, 80 ]
+     Slope: [ 0, 15 ]
+     BiomeClusterData:          
+         - Name: "DesertHighPlains"
+           Id: 3
+           ClusterSize: 60
+           NbOfClusters: 20
+           Decorations: 
+               - [ AlienPalmTree, 8]                 
+               - [ AlienPalmTreeHarvested, 5] 
+               - [ AlienPlantTube1, 2]  
+           Grass:
+               - Name: "GrassBrown02a"
+                 Density: 800
+                 YScale: 0.65
+                 Preset: "GrassPatches4"       
+         - Name: "DesertHighPlains"
+           Id: 3
+           ClusterSize: 30
+           NbOfClusters: 6
+           Decorations: 
+               - [ ModRocksBrown04, 1]
+               - [ AlienPlantReef2, 15]
+               - [ AlienPlantSpike1, 9]
+               - [ AlienPlant05, 3] 
+           Grass:
+               - Name: "GrassBrown02a"
+                 Density: 800
+                 YScale: 0.65
+                 Preset: "GrassPatches4"       
+         - Name: "DesertHighPlains"
+           Id: 3
+           ClusterSize: 0
+           NbOfClusters: 0
+           Decorations: 
+               - [ AlienBushRedFronds, 0.015]
+               - [ DesertPlant20, 0.03]    
+               - [ Snakeweed, 0.1]    
+               - [ OpuntiaCactus, 0.03]    
+               - [ ScalyPods, 0.08]  
+               - [ AlienPlantTube1, 0.1]  
+               - [ ModRocksBrown01, 0.002]
+               - [ ModRocksBrown02, 0.001]
+               - [ ModRocksBrown03, 0.002]
+               - [ ModRocksBrown04, 0.002]
+           Grass:
+               - Name: "GrassBrown02a"
+                 Density: 800
+                 YScale: 0.8
+                 Preset: "GrassPatches4a"    
+   - Altitude: [ 55, 80 ]
+     Slope: [ 0, 180 ]
+     BiomeClusterData:
+         - Name: "DesertHighPlains"
+           Id: 3
+           ClusterSize: 0
+           NbOfClusters: 0
+           Decorations: 
+               - [ RealRock1, 0]
+# Mountains
+   - Altitude: [ 80, 250 ]
+     Slope: [ 0, 50 ]
+     BiomeClusterData:
+         - Name: "Mountains"
+           Id: 4
+           ClusterSize: 0
+           NbOfClusters: 0
+           Decorations: 
+               - [ AlienPlantPod2, 1]
+               - [ DesertPlant20, 0.5]   
+               - [ OpuntiaCactus, 0.5]    
+   - Altitude: [ 80, 250 ]
+     Slope: [ 0, 180 ]
+     BiomeClusterData:
+         - Name: "Mountains"
+           Id: 4
+           ClusterSize: 0
+           NbOfClusters: 0
+           Decorations: 
+               - [ RealRock1, 0]
+
+### POIs
+POIs:
+    Random:
+        - GroupName: XenuTierI          # Group name of POI
+          CountMinMax: [ 4, 6 ]         # Range of number of POIs of this group to distribute on planet
+          DroneProb: 1.0                # Probability that a POI is defended by drones
+          DronesMinMax: [ 1, 2 ]        # Range of number of drones that defend POI
+          ReserveCount: 3               # Number of drones that will be replaced when destroyed
+          TroopTransport: True          # If troop transport will be sent
+
+        - GroupName: MiningComplex
+          CountMinMax: [ 1, 1 ]
+          DroneProb: 1.0
+          DronesMinMax: [ 2, 2 ]
+          ReserveCount: 4
+          TroopTransport: True
+
+        - GroupName: Artifact
+          CountMinMax: [ 1, 2 ]
+          DroneProb: 0.6
+          DronesMinMax: [ 1, 2 ]
+          ReserveCount: 3
+          TroopTransport: False
+
+    Fixed:
+        - Type: BA_Player               # Type of blueprint (BA, SV, HV, CV)
+          Prefab: BA_OutpostOmicron     # Filename of blueprint
+          Mode: Creative                # Creative or Survival
+          SubMode: Normal               # Empty / Normal (only evaluated in Creative mode) [default: Normal]
+          Name: Outpost Omicron         # Name of blueprint as displayed to player
+          Pos: [ -415, 66.5, -38.6 ]    # Position coordinates
+          Rot: [ 0, 40, 0 ]             # Rotation angles
+          InitPower: True               # Set if POI should be initially powered, default: False
+ 
+        - Type: SV_Player
+          Prefab: SV_Scorpio    
+          Mode: Creative                
+          SubMode: Normal                
+          Name: Scorpio MKI            
+          Pos: [ -398.3, 83.68, -22.87 ]    
+          Rot: [ 0, -50, 0 ]       
+
+        - Type: BA_Player
+          Prefab: BA_TestBase
+          Mode: Debug
+          Name: Test Base
+          Pos: [-349, 70.2, -273 ]
+          Rot: [ 0, 270, 0 ]
+
+        - Type: SV_Player
+          Prefab: SV_Cruiser
+          Mode: Debug
+          Name: BS Bouba
+          Pos: [ -323.4, 70, -333.54]
+          Rot: [ 0, 0, 0 ]
+
+        - Type: BA_Alien
+          Prefab: BA_MiningComplex
+          Mode: Debug
+          Name: Enemy Base
+          Pos: [ -773, 21, -156 ]
+          Rot: [ 0, 0, 0 ]
+          InitPower: True
+
+    FixedPlayerStart:
+        - Mode: Creative                 # Creative or Survival  
+          SubMode: Normal                # Empty / Normal (only evaluated in Creative mode) [default: Normal]
+          Pos: [ -418, 88.5, -39 ]       # Position coordinates
+          RotY: -113                     # Rotation angle around Y axis		  
+
+        - Mode: Creative                   
+          SubMode: Empty   
+          Pos: [ -841, 56, 142 ]         
+          RotY: -18                      
+
+        - Mode: Debug
+          Pos: [ -353, 72, -306 ]
+          RotY: 0
+
+### Drones
+DroneBaseSetup:
+# PresetStyle:
+# -> 0 = no drone attack base,
+#    1 = day + 2 triggers,
+#    2 = night + 2 triggers,
+#    3 = at once + 2 triggers,
+#    4 = night + turret trigger
+
+# Extra:
+# -> 0 = Default drone
+#    1 = Drone that attacks base
+#    2 = Troop transport
+#    3 = Ground troop - content of troop transport
+
+# Troop Transport: 
+# 4 slots for NPCs per troop transport
+# Proportion of NPC in each transport determined by ratio of total amounts
+    Random:
+        - GroupName: DroneBaseOmicron
+          DronesMinMax: [ 2, 3 ]        # Range of number of drones that defend drone base
+          ReserveCount: 3               # Number of drones that will be replaced when defending drones got killed
+          DroneProb: 1.0                # Probability that drones will defend drone base
+          Difficulty: 2                 # 0..4 -> 0 = no drone attack base ... 4 = max difficulty level (5, 6, 7 = low, medium, high difficulty but with infinite drone waves)
+          PresetStyle: 2                # 0..4 -> see comment above
+          # BaseAttack: DroneSmallAttackBase              
+          Stock:
+              - Name: DroneSmallFast01Rocket    # Name of drone   
+                Amount: 10                      # Amount of drones in stock          
+                Extra: 0                        # Type of drone 0..3 -> see comment above      
+
+              - Name: DroneSmallFast01Minigun
+                Amount: 20
+                Extra: 0
+
+              - Name: DroneLargeSlow01Minigun
+                Amount: 10
+                Extra: 0
+
+              - Name: DroneSmallSlow01Cannon
+                Amount: 20
+                Extra: 0
+
+              - Name: DroneSmallAttackBase
+                Amount: 20
+                Extra: 1                        
+
+              - Name: DroneTroopsTransport
+                Amount: 1
+                Extra: 2
+
+              - Name: ZiraxMale
+                Amount: 30
+                Extra: 3
+
+              - Name: Crawler
+                Amount: 20
+                Extra: 3
+
+# Drones that patrol on whole planet 
+# Type determined by stock of drone base (default drone - type = 0)
+DroneSpawning:
+    Random:
+        - DronesMinMax: [ 5, 10 ]    # Range of number of drones that patrol
+          CenterX: -2500             # Center of circle around which drones patrol (radius 1500m)
+
+        - DronesMinMax: [ 5, 10 ]    # Range of number of drones that patrol
+          CenterX: 2500              # Center of circle around which drones patrol (radius 1500m)
+
+### Creatures
+CreatureSpawning:
+    - Biome: SmallLake               # Biome (defined above) in which creature will spawn
+      Entities:
+        - Name: CaveWormsGreen       # Name of creature
+          Period: Night              # Night / Day / Always
+          Amount: 1                  # Amount of creatures that will spawn at a given time
+          Delay: 0                   # Time in game hours during which no creatures will spawn
+          # RestrictYMinMax: [ 70, 120 ]   # Creature will spawn only in between these altitudes
+
+    - Biome: DesertLowPlains
+      Entities:
+        - Name: WormsDesert
+          Period: Day
+          Amount: 1
+          Delay: 0
+          # RestrictYMinMax: [ 70, 120 ]
+
+        - Name: Otyughs
+          Period: Night
+          Amount: 1
+          Delay: 0
+          # RestrictYMinMax: [ 70, 120 ]
+
+    - Biome: DesertHighPlains
+      Entities:
+        - Name: GolemsDesert
+          Period: Night
+          Amount: 1
+          Delay: 0
+          # RestrictYMinMax: [ 50, 120 ]
+
+        - Name: CaveWormsGrey
+          Period: Always
+          Amount: 1
+          Delay: 0
+          # RestrictYMinMax: [ 70, 120 ]
